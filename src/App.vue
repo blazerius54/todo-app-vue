@@ -7,7 +7,7 @@
         <p>Completed tasks: {{todos.filter(function(todo){return todo.done === true}).length}}</p>
         <p>Pending task: {{todos.filter(todo => {return todo.done === false}).length}}</p>  
       </div>
-      <div id='second'>
+      <div id='second'></div>
         <todo-list v-bind:todos='todos'></todo-list>
         <create-todo v-on:create-todo='addTodo'></create-todo>
       </div>
