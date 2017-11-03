@@ -52,7 +52,7 @@ export default {
           });
           this.toggleForm();
           this.titleText = '';
-          this.Project
+          this.Project = '';
         }
     }
 }
