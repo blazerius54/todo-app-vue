@@ -12,10 +12,10 @@
           </div>
           <div class='field'>
             <label>Project</label>
-            <input v-model='description' type='text' ref='project' defaultValue="">
+            <input v-model='project' type='text' ref='project' defaultValue="">
           </div>
           <div class='ui two button attached buttons'>
-            <button class='ui basic blue button' v-on:click="toggleForm">
+            <button class='ui basic blue button' v-on:click="sendForm">
               Create
             </button>
             <button class='ui basic red button' v-on:click="toggleForm">
@@ -34,13 +34,25 @@ export default {
         return {
             isCreating: false,
             titleText: '',
-            description: ''
+            project: ''
 
         }
     },
     methods: {
         toggleForm() {
             this.isCreating = !this.isCreating
+        },
+        sendForm() {
+          const title = this.titleText;
+          const project = this.project;
+          this.$emit('create-todo', {
+            title,
+            project,
+            done: false
+          });
+          this.toggleForm();
+          this.titleText = '';
+          this.Project
         }
     }
 }

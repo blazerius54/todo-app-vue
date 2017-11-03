@@ -1,9 +1,18 @@
 <template>
-  <div id="app">
-    <!-- <router-view/> -->
-    <todo-list v-bind:todos='todos'></todo-list>
-    <create-todo></create-todo>
-  </div>
+  
+    <div id="app">
+      <!-- <router-view/> -->
+      <div id='first'>
+        <h2>Todos:</h2>
+        <p>Completed tasks: {{todos.filter(function(todo){return todo.done === true}).length}}</p>
+        <p>Pending task: {{todos.filter(todo => {return todo.done === false}).length}}</p>  
+      </div>
+      <div id='second'
+        <todo-list v-bind:todos='todos'></todo-list>
+        <create-todo v-on:create-todo='addTodo'></create-todo>
+      </div>
+    </div>
+
 </template>
 
 <script>
@@ -36,9 +45,24 @@ export default {
         done: false,
       }]
     }
+  },
+  methods: {
+    addTodo(val) {
+      this.todos.push(val)
+    }
   }  
 }
 </script>
 
 <style>
+#app{
+  display:flex;
+  flex-direction: column;
+}
+#first{
+  margin: 20px auto
+}
+
+
+
 </style>
